@@ -1,13 +1,16 @@
 import React from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import Container from "react-bootstrap/esm/Container";
 
-export const DefaultLayout = ({ children }) => {
+export const DefaultLayout = ({ children, pageTitle }) => {
   return (
     <div>
       {/* Header */}
       <Header />
-      <main className="main min-vh-75">{children}</main>
+      <Container />
+      <div className="p-2">{pageTitle}</div>
+      <main className="main ">{children}</main>
 
       {/* Footer */}
 

@@ -9,24 +9,22 @@ export const CustomCarousel = () => {
       <Carousel.Item>
         <img className="d-block w-100" src={photo1} alt="First slide" />
         <Carousel.Caption className="text-light">
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h2>Welcome to our library</h2>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className="text-light">
         <img className="d-block w-100" src={photo2} alt="Second slide" />
         <Carousel.Caption>
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h5>
+            The only thing that you absolutely have to know, is the location of
+            the library.
+          </h5>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className="text-light">
         <img className="d-block w-100" src={photo3} alt="Third slide" />
         <Carousel.Caption className="text-light">
-          <h5>Third slide label</h5>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h5>Storing the energy that fuels the imagination</h5>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
