@@ -3,7 +3,7 @@ import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Button, Row, Col, Form } from "react-bootstrap";
 import { CustomInput } from "../../customInpute/CustomInput";
 import { toast } from "react-toastify";
-import { loginUser } from "../../helpers/axiosHelper";
+import { loginUser } from "../../features/user/userAxios";
 
 const Signin = () => {
   const emailRef = useRef("");
@@ -18,8 +18,11 @@ const Signin = () => {
       return toast.error("Both inputs must be filled");
     }
 
-    const result = await loginUser({ email, password });
-    console.log(result);
+    const { status, message, tokens } = await loginUser({ email, password });
+    toast[status](message);
+
+    sessionStorage.setItem("accessJWT", tokens.accessJWT);
+    localStorage.setItem("refreshJWT", tokens.refreshJWT);
   };
 
   const inputs = [
