@@ -20,3 +20,12 @@ export const postNewUser = async (obj) => {
   };
   return apiProcessor(axiosObj);
 };
+
+export const fetchUserInfo = () => {
+  const axiosObj = {
+    method: "get",
+    url: userEP,
+    isPrivate: true,
+  };
+  return apiProcessor(axiosObj);
+};

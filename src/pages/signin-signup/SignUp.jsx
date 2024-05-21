@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { CustomInput } from "../../customInpute/CustomInput";
+import { CustomInput } from "../../components/customInpute/CustomInput";
 import { toast } from "react-toastify";
 import { postNewUser } from "../../features/user/userAxios";
 

@@ -1,13 +1,22 @@
-import React, { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Button, Row, Col, Form } from "react-bootstrap";
-import { CustomInput } from "../../customInpute/CustomInput";
+import { CustomInput } from "../../components/customInpute/CustomInput";
 import { toast } from "react-toastify";
 import { loginUser } from "../../features/user/userAxios";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserObj } from "../../features/user/userAction";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const dispatch = useDispatch();
   const emailRef = useRef("");
   const passRef = useRef("");
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.userInfo);
+  useEffect(() => {
+    user?._id && navigate("/dashboard");
+  }, [user?._id, navigate]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +32,10 @@ const Signin = () => {
 
     sessionStorage.setItem("accessJWT", tokens.accessJWT);
     localStorage.setItem("refreshJWT", tokens.refreshJWT);
+
+    if (status === "success") {
+      dispatch(getUserObj);
+    }
   };
 
   const inputs = [
