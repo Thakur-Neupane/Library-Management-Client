@@ -1,42 +1,42 @@
 import React from "react";
 import { Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { GiBookshelf } from "react-icons/gi";
-import { PiStudentThin } from "react-icons/pi";
-import { FaList } from "react-icons/fa";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBookBookmark } from "react-icons/fa6";
+import { FaUsers } from "react-icons/fa";
+import { FaListUl } from "react-icons/fa6";
 import { RiAdminFill } from "react-icons/ri";
-import { FaUser } from "react-icons/fa";
+import { IoLibrary } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+import { useSelector } from "react-redux";
 
 const sideLinks = [
   {
-    icon: <GiBookshelf />,
-    title: "Book",
+    icon: <FaBookBookmark />,
+    title: "Books",
     to: "/admin/books",
     isAdminOnly: true,
   },
   {
-    icon: <PiStudentThin />,
+    icon: <FaUsers />,
     title: "Students",
     to: "/admin/students",
     isAdminOnly: true,
   },
   {
-    icon: <FaList />,
+    icon: <FaListUl />,
     title: "All Burrows",
     to: "/admin/all-burrows",
     isAdminOnly: true,
   },
   {
-    icon: <FaBookOpen />,
-    title: "My Book",
-    to: "/admin/my-book",
+    icon: <IoLibrary />,
+    title: "My Books",
+    to: "/my-books",
   },
   {
-    icon: <FaUser />,
+    icon: <CgProfile />,
     title: "Profile",
-    to: "/admin/profil",
+    to: "/profile",
   },
   {
     icon: <RiAdminFill />,

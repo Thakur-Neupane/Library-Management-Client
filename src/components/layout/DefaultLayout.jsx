@@ -6,14 +6,14 @@ import Container from "react-bootstrap/esm/Container";
 export const DefaultLayout = ({ children, pageTitle }) => {
   return (
     <div>
-      {/* Header */}
+      {/* header  */}
       <Header />
-      <Container />
-      <div className="p-2">{pageTitle}</div>
-      <main className="main ">{children}</main>
+      <Container>
+        <div className="p-2">{pageTitle}</div>
+        <main className="main">{children}</main>
+      </Container>
 
-      {/* Footer */}
-
+      {/* footer  */}
       <Footer />
     </div>
   );

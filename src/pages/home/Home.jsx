@@ -1,30 +1,30 @@
 import React from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
-import { CustomCarousel } from "../../components/customCarousel/CustomCarousel";
+import { CustomCarousel } from "../../components/customCarouse/CustomCarousel";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import { CustomCard } from "../../components/customcard/CustomCard";
+import { CustomCard } from "../../components/customCard/CustomCard";
 
 const Home = () => {
   return (
     <DefaultLayout>
       <CustomCarousel />
 
-      {/* Book List */}
+      {/* book list  */}
 
       <Container>
         <Row>
-          <Col>
-            <label html for="">
-              20 Books found{" "}
-            </label>
+          <Col className="d-flex justify-content-between mt-5">
+            <label htmlFor="">20 books found!</label>
             <div>
-              <Form.Control placeholder="Search by book Name" />
+              <Form.Control placeholder="search by book name .. " />
             </div>
           </Col>
         </Row>
         <hr />
         <Row>
-          <CustomCard />
+          <Col>
+            <CustomCard />
+          </Col>
         </Row>
       </Container>
     </DefaultLayout>
