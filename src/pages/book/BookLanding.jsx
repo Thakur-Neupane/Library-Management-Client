@@ -1,8 +1,8 @@
 import React from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
 
-const Product = () => {
-  return <DefaultLayout>Product</DefaultLayout>;
+const BookLanding = () => {
+  return <DefaultLayout>BookLanding</DefaultLayout>;
 };
 
-export default Product;
+export default BookLanding;

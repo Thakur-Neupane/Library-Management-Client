@@ -49,6 +49,7 @@ const SignIn = () => {
       required: true,
       placeholder: "Sam@email.com",
       inputRef: emailRef,
+      value: "a@a.com",
     },
     {
       label: "Password",
@@ -57,9 +58,11 @@ const SignIn = () => {
       required: true,
       placeholder: "*******",
       inputRef: passRef,
+      value: "123",
     },
   ];
 
+  console.log("Is not rendering");
   return (
     <DefaultLayout>
       <Row>

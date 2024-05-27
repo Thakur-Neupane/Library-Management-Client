@@ -1,11 +1,12 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
+import { Table } from "react-bootstrap";
 
 export const BookTable = () => {
   return (
     <div>
       <div className="d-flex justify-content-between mb-4">
-        <div>30 books found!!!!!!!</div>
+        <div>30 Books found!</div>
+
         <div>
           <input type="text" className="form-control" />
         </div>

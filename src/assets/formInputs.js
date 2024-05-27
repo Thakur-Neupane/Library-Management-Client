@@ -1,41 +1,40 @@
 export const inputFields = [
   {
-    label: "title",
+    label: "Title",
     name: "title",
     type: "text",
     required: true,
-    placeholder: "Learn JavaScript",
+    placeholder: "Learn Javascript",
   },
   {
     label: "Author",
     name: "author",
     type: "text",
     required: true,
-    placeholder: "Learn JavaScript",
+    placeholder: "Uncle Bob",
   },
   {
     label: "Thumbnail",
     name: "thumbnail",
     type: "url",
     required: true,
-    placeholder: "Learn JavaScript",
+    placeholder: "https://path-to-image.com",
   },
   {
     label: "ISBN",
     name: "isbn",
     type: "text",
     required: true,
-    placeholder: "2345678guy",
+    placeholder: "9876LKJHHG",
   },
   {
-    label: " Published Year",
-    name: "publishedyear",
+    label: "Published Year",
+    name: "publishedYear",
     type: "number",
     min: "1000",
     required: true,
     placeholder: "2020",
   },
-
   {
     label: "Description",
     name: "description",
@@ -43,7 +42,7 @@ export const inputFields = [
     as: "textarea",
     maxLength: "5000",
     required: true,
-    placeholder: "Book summary ...........",
+    placeholder: "Book summary ...",
     rows: "5",
   },
 ];
