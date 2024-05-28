@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   books: [],
+  selectedBook: {},
 };
 
 const bookSlice = createSlice({
@@ -11,10 +12,13 @@ const bookSlice = createSlice({
     setBooks: (state, { payload }) => {
       state.books = payload || [];
     },
+    setSelectedBook: (state, { payload }) => {
+      state.selectedBook = payload;
+    },
   },
 });
 
 const { reducer, actions } = bookSlice;
 
-export const { setBooks } = actions;
+export const { setBooks, setSelectedBook } = actions;
 export default reducer;

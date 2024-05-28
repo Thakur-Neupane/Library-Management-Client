@@ -36,7 +36,15 @@ export const BookTable = () => {
                 <img src={item.thumbnail} alt="" width={"70px"} />
               </td>
               <td>{item.title}</td>
-              <td>@mdo</td>
+              <div>
+                <td>{item.author}</td>
+              </div>
+              <div>
+                <td>{item.status}</td>
+              </div>
+              <Link to={"/admin/book/edit+item.id"}>
+                <Button variant="warning">Edit</Button>
+              </Link>
             </tr>
           ))}
         </tbody>

@@ -14,8 +14,17 @@ export const postNewBook = async (obj) => {
 
 export const fetchBooks = async (isPrivate) => {
   const axiosObj = {
-    method: "post",
+    method: "get",
     url: isPrivate ? bookEP + "/all" : bookEP,
+    isPrivate: true,
+  };
+  return apiProcesser(axiosObj);
+};
+
+export const fetchingleBook = async (isPrivate) => {
+  const axiosObj = {
+    method: "get",
+    url: bookEP + "/" + "_id",
     isPrivate: true,
   };
   return apiProcesser(axiosObj);
