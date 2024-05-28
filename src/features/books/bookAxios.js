@@ -11,3 +11,12 @@ export const postNewBook = async (obj) => {
   };
   return apiProcesser(axiosObj);
 };
+
+export const fetchBooks = async (isPrivate) => {
+  const axiosObj = {
+    method: "post",
+    url: isPrivate ? bookEP + "/all" : bookEP,
+    isPrivate: true,
+  };
+  return apiProcesser(axiosObj);
+};

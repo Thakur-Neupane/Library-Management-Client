@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
+import { getAllBooks } from "../../features/books/bookAction";
 
+const isPrivate = true;
 export const BookTable = () => {
+  useEffect(() => {
+    dispatchEvent(getAllBooks(isPrivate));
+  }, [dispatch]);
+
+  const { books } = useSelector((state) => state.bookInfo);
   return (
     <div>
       <div className="d-flex justify-content-between mb-4">
@@ -22,23 +29,16 @@ export const BookTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {books.map((item, i) => (
+            <tr key={item._id}>
+              <td>{i + 1}</td>
+              <td>
+                <img src={item.thumbnail} alt="" width={"70px"} />
+              </td>
+              <td>{item.title}</td>
+              <td>@mdo</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>
