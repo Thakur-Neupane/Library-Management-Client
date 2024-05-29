@@ -58,7 +58,7 @@ const SignIn = () => {
       required: true,
       placeholder: "*******",
       inputRef: passRef,
-      value: "12345",
+      value: "123",
     },
   ];
 
