@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
-import { postNewBook } from "./bookAxios";
+import { fetchBooks, fetchSingleBook, postNewBook } from "./bookAxios";
+import { setBooks, setSelectedBook } from "./bookSlice";
 
 export const postNewBookAction = (obj) => async (disptch) => {
   // call axios to send data
@@ -14,4 +15,17 @@ export const postNewBookAction = (obj) => async (disptch) => {
   toast[status](message);
   console.log(status, message);
   // then call function to fetch all the data
+};
+
+export const getAllBooksAction = (isPrivate) => async (dispatch) => {
+  const { status, books } = await fetchBooks(isPrivate);
+  if (status) {
+    dispatch(setBooks(books));
+  }
+};
+export const getSingleBookAction = (_id) => async (dispatch) => {
+  const { status, books } = await fetchSingleBook(_id);
+  if (status) {
+    dispatch(setSelectedBook(books));
+  }
 };

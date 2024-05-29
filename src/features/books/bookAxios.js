@@ -20,12 +20,10 @@ export const fetchBooks = async (isPrivate) => {
   };
   return apiProcesser(axiosObj);
 };
-
-export const fetchingleBook = async (isPrivate) => {
+export const fetchSingleBook = async (_id) => {
   const axiosObj = {
     method: "get",
-    url: bookEP + "/" + "_id",
-    isPrivate: true,
+    url: bookEP + "/" + _id,
   };
   return apiProcesser(axiosObj);
 };

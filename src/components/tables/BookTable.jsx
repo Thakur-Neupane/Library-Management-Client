@@ -1,14 +1,18 @@
 import React, { useEffect } from "react";
-import { Table } from "react-bootstrap";
-import { getAllBooks } from "../../features/books/bookAction";
+import { Button, Table } from "react-bootstrap";
+import { getAllBooksAction } from "../../features/books/bookAction";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const isPrivate = true;
 export const BookTable = () => {
-  useEffect(() => {
-    dispatchEvent(getAllBooks(isPrivate));
-  }, [dispatch]);
+  const dispatch = useDispatch();
 
   const { books } = useSelector((state) => state.bookInfo);
+
+  useEffect(() => {
+    dispatch(getAllBooksAction(isPrivate));
+  }, [dispatch]);
   return (
     <div>
       <div className="d-flex justify-content-between mb-4">
@@ -35,16 +39,22 @@ export const BookTable = () => {
               <td>
                 <img src={item.thumbnail} alt="" width={"70px"} />
               </td>
-              <td>{item.title}</td>
-              <div>
-                <td>{item.author}</td>
-              </div>
-              <div>
-                <td>{item.status}</td>
-              </div>
-              <Link to={"/admin/book/edit+item.id"}>
-                <Button variant="warning">Edit</Button>
-              </Link>
+              <td>
+                <h2>{item.title.slice(0, 30)} ...</h2>
+                <div>{item.author}</div>
+                <div
+                  className={
+                    item.status === "active" ? "text-success" : "text-danger"
+                  }
+                >
+                  Status: {item.status}
+                </div>
+              </td>
+              <td>
+                <Link to={"/admin/book/edit/" + item._id}>
+                  <Button variant="warning">Edit</Button>
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>
