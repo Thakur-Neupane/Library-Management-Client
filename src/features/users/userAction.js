@@ -1,20 +1,19 @@
 import { setUser } from "./userSlice";
-import { fetchUserInfo } from "./userAxios";
-import { loginUser } from "./userAxios";
+import { fetchUserInfo, loginUser } from "./userAxios";
 import { toast } from "react-toastify";
 
 export const getUserObj = () => async (dispatch) => {
   const { status, user } = await fetchUserInfo();
-  console.log({ status });
-  dispatch(setUser(user));
+  console.log(status, user);
 
   //update store
+  dispatch(setUser(user));
 };
 
 export const userSignInAction = (obj) => async (dispatch) => {
   const pending = loginUser(obj);
   toast.promise(pending, {
-    pending: "please wait .......",
+    pending: "Please wait...",
   });
   const { status, message, tokens } = await pending;
   toast[status](message);
@@ -23,8 +22,6 @@ export const userSignInAction = (obj) => async (dispatch) => {
   localStorage.setItem("refreshJWT", tokens.refreshJWT);
 
   if (status === "success") {
-    const { status, user } = await fetchUserInfo();
-    console.log({ status, user });
     dispatch(getUserObj());
   }
 };

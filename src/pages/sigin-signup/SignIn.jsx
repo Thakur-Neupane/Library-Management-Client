@@ -4,7 +4,7 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 import { CustomInput } from "../../components/customInpute/CustomInput";
 import { toast } from "react-toastify";
 import { loginUser } from "../../features/users/userAxios";
-import { userSignInAction } from "../../features/users/userAction";
+import { getUserObj, userSignInAction } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -25,20 +25,11 @@ const SignIn = () => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passRef.current.value;
-    console.log(email, password);
+
     if (!email || !password) {
       return toast.error("Both field must be filled");
     }
 
-    // const { status, message, tokens } = await loginUser({ email, password });
-    // toast[status](message);
-    // //store tokens in the sessions
-    // sessionStorage.setItem("accessJWT", tokens.accessJWT);
-    // localStorage.setItem("refreshJWT", tokens.refreshJWT);
-
-    // if (status === "success") {
-    // dispatch(getUserObj());
-    // }
     dispatch(userSignInAction({ email, password }));
   };
 
@@ -63,7 +54,7 @@ const SignIn = () => {
     },
   ];
 
-  // console.log("Is not rendering");
+  console.log("Is not rendering");
   return (
     <DefaultLayout>
       <Row>

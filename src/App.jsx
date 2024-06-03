@@ -23,6 +23,7 @@ import BookLanding from "./pages/book/BookLanding";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllBooksAction());
   }, [dispatch]);
@@ -33,7 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="signin" element={<SignIn />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="book/:._id" element={<BookLanding />} />
+        <Route path="book/:_id" element={<BookLanding />} />
 
         {/* private routes */}
         {/* admin access only  */}

@@ -20,12 +20,11 @@ const Home = () => {
 
     setSearchBooks(
       books.filter(({ title }) =>
-        title.toLowerCase().includes(value.toLowerCase)
+        title.toLowerCase().includes(value.toLowerCase())
       )
     );
   };
 
-  console.log(books);
   return (
     <DefaultLayout>
       <CustomCarousel />
@@ -35,7 +34,7 @@ const Home = () => {
       <Container>
         <Row>
           <Col className="d-flex justify-content-between mt-5">
-            <label htmlFor="">{books.length} books found!</label>
+            <label htmlFor="">{searchedBooks.length} books found!</label>
             <div>
               <Form.Control
                 onChange={handleOnSearch}
@@ -47,12 +46,11 @@ const Home = () => {
         <hr />
         <Row>
           <Col className="d-flex gap-2 flex-wrap">
-            {searchedBooks.length > 0 &&
-              searchedBooks.map((book) => {
-                <Link key={book._id} to={"/book" + book._id}>
-                  <CustomCard key={book._id} {...book} />;
-                </Link>;
-              })}
+            {searchedBooks.map((book) => (
+              <Link key={book._id} to={"/book/" + book._id}>
+                <CustomCard {...book} />
+              </Link>
+            ))}
           </Col>
         </Row>
       </Container>

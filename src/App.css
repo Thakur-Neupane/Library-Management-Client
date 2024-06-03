@@ -10,10 +10,12 @@
   height: 60vh;
   object-fit: cover;
 }
+
 a {
   text-decoration: none !important;
 }
-.card :hover img {
+
+.card:hover {
   transform: scale(1.1);
   transition: all 0.3s;
 }
