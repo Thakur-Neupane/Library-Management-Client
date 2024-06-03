@@ -27,3 +27,13 @@ export const fetchSingleBook = async (_id) => {
   };
   return apiProcesser(axiosObj);
 };
+
+export const updateABook = async (obj) => {
+  const axiosObj = {
+    method: "put",
+    url: bookEP,
+    data: obj,
+    isPrivate: true,
+  };
+  return apiProcesser(axiosObj);
+};

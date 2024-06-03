@@ -16,15 +16,24 @@ import AllBurrowList from "./pages/burrow/AllBurrowList";
 import MyBurrow from "./pages/burrow/MyBurrow";
 import UserProfile from "./pages/user/UserProfile";
 import AdminList from "./pages/user/AdminList";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getAllBooksAction } from "./features/books/bookAction";
+import BookLanding from "./pages/book/BookLanding";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllBooksAction());
+  }, [dispatch]);
   return (
     <div>
       <Routes>
         {/* public routes  */}
         <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="signin" element={<SignIn />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="book/:._id" element={<BookLanding />} />
 
         {/* private routes */}
         {/* admin access only  */}
