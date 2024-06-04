@@ -1,13 +1,14 @@
 import React from "react";
 import { DefaultLayout } from "../../components/layout/DefaultLayout";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Col, Nav, Row, Spinner, Tab, Tabs } from "react-bootstrap";
+import { Button, Col, Row, Spinner, Tab, Tabs } from "react-bootstrap";
 import { ReviewBlock } from "../../components/customCard/ReviewBlock";
 import { Stars } from "../../components/stars/Stars";
 import { addNewBurrowAction } from "../../features/burrows/burrowAction";
 
 const BookLanding = () => {
+  const location = useLocation;
   const dispatch = useDispatch();
   const { _id } = useParams();
 
@@ -53,11 +54,19 @@ const BookLanding = () => {
 
           <div className="d-grid">
             {user?._id ? (
-              <Button disabled={isAvailable} onClick={handleOnBookBurrow}>
-                Burrow This Book
+              <Button disabled={!isAvailable} onClick={handleOnBookBurrow}>
+                {isAvailable
+                  ? "Burrow This Book"
+                  : "Expected Available Date" + expectedAvailable.slice(0, 10)}
               </Button>
             ) : (
-              <Link to="/signin" className="d-grid">
+              <Link
+                to="/signin"
+                className="d-grid"
+                state={{
+                  from: { location },
+                }}
+              >
                 <Button>Login to burrow</Button>
               </Link>
             )}

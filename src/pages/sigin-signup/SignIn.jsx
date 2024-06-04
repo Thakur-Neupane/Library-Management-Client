@@ -3,23 +3,26 @@ import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { CustomInput } from "../../components/customInpute/CustomInput";
 import { toast } from "react-toastify";
-import { loginUser } from "../../features/users/userAxios";
-import { getUserObj, userSignInAction } from "../../features/users/userAction";
+import { userSignInAction } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const SignIn = () => {
+  const location = useLocation();
+
+  const sendTo = location?.state?.from?.location?.pathname || "/dashboard";
+
   const dispatch = useDispatch();
   const emailRef = useRef("");
   const passRef = useRef("");
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.userInfo);
-  console.log(user);
 
   useEffect(() => {
-    user?._id && navigate("/dashboard");
-  }, [user?._id, navigate]);
+    user?._id && navigate(sendTo);
+  }, [user?._id, navigate, sendTo]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
