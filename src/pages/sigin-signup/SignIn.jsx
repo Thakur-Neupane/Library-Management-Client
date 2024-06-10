@@ -3,22 +3,22 @@ import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { CustomInput } from "../../components/customInpute/CustomInput";
 import { toast } from "react-toastify";
-import { userSignInAction } from "../../features/users/userAction";
+import { loginUser } from "../../features/users/userAxios";
+import { getUserObj, userSignInAction } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const location = useLocation();
-
-  const sendTo = location?.state?.from?.location?.pathname || "/dashboard";
-
   const dispatch = useDispatch();
   const emailRef = useRef("");
   const passRef = useRef("");
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.userInfo);
+  console.log(location);
+
+  const sendTo = location?.state?.from?.location?.pathname || "/dashboard";
 
   useEffect(() => {
     user?._id && navigate(sendTo);
@@ -44,7 +44,7 @@ const SignIn = () => {
       required: true,
       placeholder: "Sam@email.com",
       inputRef: emailRef,
-      value: "a@a.com",
+      value: "s@s.com",
     },
     {
       label: "Password",
@@ -53,7 +53,7 @@ const SignIn = () => {
       required: true,
       placeholder: "*******",
       inputRef: passRef,
-      value: "123",
+      value: "12345",
     },
   ];
 

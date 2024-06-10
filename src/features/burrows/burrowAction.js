@@ -1,7 +1,7 @@
 import { getAllBooksAction, getSingleBookAction } from "../books/bookAction";
-import { fetchBurrows, postNewBurrow } from "./burrowAxios";
+import { fetchBurrows, postNewBurrow, returnBook } from "./burrowAxios";
 import { toast } from "react-toastify";
-import { setburrows } from "./burrowSlice";
+import { setBurrows } from "./burrowSlice";
 
 export const addNewBurrowAction = (obj) => async (dispatch) => {
   const pending = postNewBurrow(obj);
@@ -16,14 +16,31 @@ export const addNewBurrowAction = (obj) => async (dispatch) => {
 
   if (status) {
     //fetch the seleted book
-
     dispatch(getAllBooksAction());
   }
 };
 
-export const fetchBurrowsAction= ()=> async dispatch
+export const fetchBurrowsAction = () => async (dispatch) => {
+  const { status, burrows } = await fetchBurrows();
+  console.log(status, burrows);
 
-const (status, burrows)= await fetchBurrows()
-if (status==="success"){
-  dispatch(setburrows(burrows))
-}
+  if (status === "success") {
+    dispatch(setBurrows(burrows));
+  }
+};
+
+export const returnBurrowAction = (obj) => async (dispatch) => {
+  const pending = returnBook(obj);
+
+  toast.promise(pending, {
+    pending: "Please wait...",
+  });
+
+  const { status, message } = await pending;
+  toast[status](message);
+
+  if (status === "success") {
+    dispatch(getAllBooksAction());
+    dispatch(fetchBurrowsAction());
+  }
+};

@@ -5,7 +5,6 @@ import { renewAccessJWT } from "../../helpers/axiosHelper";
 
 export const getUserObj = () => async (dispatch) => {
   const { status, user } = await fetchUserInfo();
-  console.log(status, user);
 
   //update store
   dispatch(setUser(user));
@@ -13,7 +12,6 @@ export const getUserObj = () => async (dispatch) => {
 
 export const userSignInAction = (obj) => async (dispatch) => {
   const pending = loginUser(obj);
-
   toast.promise(pending, {
     pending: "Please wait...",
   });
@@ -28,18 +26,18 @@ export const userSignInAction = (obj) => async (dispatch) => {
   }
 };
 
-// Auto login USer
-
+//auto login user
 export const autoLogin = () => async (dispatch) => {
   const accessJWT = sessionStorage.getItem("accessJWT");
-  const refreshJWT = sessionStorage.getItem("refreshJWT");
+  const refreshJWT = localStorage.getItem("refreshJWT");
 
-  // When access JWT exist
+  // when access JWT exists
   if (accessJWT) {
     dispatch(getUserObj());
     return;
   }
-  // When access JWT donot exist but refresh JWT exist
+
+  //when accessJWT do not exist but refreshJWT exist
   if (refreshJWT) {
     const token = await renewAccessJWT();
     token && dispatch(getUserObj());
